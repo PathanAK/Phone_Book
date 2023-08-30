@@ -1,9 +1,11 @@
-package Service.ContactServiceImpl;
+package com.asif.phonebookminiprojectone.Service.ContactServiceImpl;
 
-import Dao.Contact;
-import Repository.ContactRepository;
-import Service.ContactService;
+import com.asif.phonebookminiprojectone.Dao.Contact;
+import com.asif.phonebookminiprojectone.Repository.ContactRepository;
+import com.asif.phonebookminiprojectone.Service.ContactService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -11,16 +13,21 @@ import java.util.Optional;
 @Service
 public class ContactServiceImpl implements ContactService {
 
-    ContactRepository contactRepository;
+    @Autowired
+    private ContactRepository contactRepository;
+
+    public ContactServiceImpl(ContactRepository contactRepository) {
+        this.contactRepository = contactRepository;
+    }
 
 
     @Override
     public String saveContact(Contact contact) {
-        contact= (Contact) contactRepository.save(contact);
+        contact = contactRepository.save(contact);
         if(contact.getContactId()!=null) {
-            return "Contact Saved Successfully..!";
-        }else {
-            return "Unable to save the contact..!!";
+            return "Contact Saved";
+        }else{
+            return "Unable to save contact";
         }
     }
 
@@ -41,6 +48,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public String updateContact(Contact contact) {
+
         if(contactRepository.existsById(contact.getContactId())) {
             contactRepository.save(contact);
             return "Update Successfully";

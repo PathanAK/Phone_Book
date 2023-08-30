@@ -1,11 +1,12 @@
-package Service;
+package com.asif.phonebookminiprojectone.Service;
 
-import Dao.Contact;
+import com.asif.phonebookminiprojectone.Dao.Contact;
 
 import java.util.List;
 
 public interface ContactService {
     public String saveContact(Contact contact);
+
 
     public List<Contact> getAllContact();
 

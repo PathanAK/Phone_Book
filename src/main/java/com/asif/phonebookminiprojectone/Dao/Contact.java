@@ -1,24 +1,24 @@
-package Dao;
+package com.asif.phonebookminiprojectone.Dao;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import lombok.*;
 
-@Entity
-@Data
-@Getter
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "CONTACT_DETAILS")
+@Entity
 public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contactId;
-    @NonNull
     private String contactName;
     private String contactEmail;
     private Long contactNum;
-
 
 }
